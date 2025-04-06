@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivacyGuard | Story Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Same header as before -->
+
+    <section class="story-viewer">
+        <div class="container">
+            <h2 class="story-title" id="story-title">Story Title</h2>
+            
+            <div class="comic-container">
+                <img id="comic-image" class="comic-image" src="" alt="Comic panel">
+            </div>
+            
+            <div class="story-nav">
+                <button id="prev-btn" class="btn">Previous</button>
+                <span id="page-indicator">1/8</span>
+                <button id="next-btn" class="btn">Next</button>
+            </div>
+            
+            <a href="stories.html" class="back-to-stories">← Back to All Stories</a>
+        </div>
+    </section>
+
+    <!-- Same footer as before -->
+
+    <script>
+        // Get story ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const storyId = urlParams.get('story') || '1';
+        
+        // Story data
+        const stories = {
+            '1': {
+                title: "The KYC Con: How a Retired Teacher Lost Her Savings",
+                panels: 8,
+                description: "A fake KYC update scam that wiped out a lifetime's savings"
+            },
+            '2': {
+                title: "Digital Arrest: The Fake Police Scam",
+                panels: 4,
+                description: "Sophisticated impersonation of police officials"
+            },
+            '3': {
+                title: "The Fake Colleague: A ₹3.5 Crore Scam",
+                panels: 4,
+                description: "Spoofed caller ID used to impersonate a colleague"
+            }
+        };
+        
+        // Current panel state
+        let currentPanel = 1;
+        const totalPanels = stories[storyId].panels;
+        
+        // DOM elements
+        const comicImage = document.getElementById('comic-image');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const pageIndicator = document.getElementById('page-indicator');
+        const storyTitle = document.getElementById('story-title');
+        
+        // Set initial state
+        storyTitle.textContent = stories[storyId].title;
+        updateComicImage();
+        updateNavButtons();
+        
+        // Event listeners
+        comicImage.addEventListener('click', nextPanel);
+        prevBtn.addEventListener('click', prevPanel);
+        nextBtn.addEventListener('click', nextPanel);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevPanel();
+            if (e.key === 'ArrowRight') nextPanel();
+        });
+        
+        // Functions
+        function updateComicImage() {
+            comicImage.src = `assets/stories/${storyId}/story${storyId}-panel${currentPanel}.png`;
+            comicImage.alt = `Story ${storyId} Panel ${currentPanel}`;
+            pageIndicator.textContent = `${currentPanel}/${totalPanels}`;
+        }
+        
+        function updateNavButtons() {
+            prevBtn.disabled = currentPanel === 1;
+            nextBtn.disabled = currentPanel === totalPanels;
+        }
+        
+        function nextPanel() {
+            if (currentPanel < totalPanels) {
+                currentPanel++;
+                updateComicImage();
+                updateNavButtons();
+            }
+        }
+        
+        function prevPanel() {
+            if (currentPanel > 1) {
+                currentPanel--;
+                updateComicImage();
+                updateNavButtons();
+            }
+        }
+    </script>
+</body>
+</html>

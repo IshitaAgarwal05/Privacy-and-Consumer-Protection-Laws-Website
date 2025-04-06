@@ -21,8 +21,7 @@
             <nav class="nav">
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="stories.html">Real Stories</a></li>
                     <li><a href="#laws">Basic Laws</a></li>
                     <li><a href="#report">File Report</a></li>
                     <li><a href="#contact">Contact Us</a></li>
@@ -64,6 +63,49 @@
                 <div class="about-image">
                     <img src="https://via.placeholder.com/500x300/253551/E0E0DB?text=Privacy+Matters" alt="Privacy Matters">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Section-->
+    <section id="stats" class="stats section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quick Statistics</h2>
+                <p>Understanding the scale of privacy violations</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="78">0</div>
+                    <div class="stat-label">% feel little control over their data</div>
+                </div>
+                <!-- More stat cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Prevention Tips Section -->
+    <section id="prevention" class="prevention section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Prevention Tips</h2>
+                <p>Protect yourself from privacy violations</p>
+            </div>
+            <div class="prevention-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="online">Online Privacy</button>
+                    <button class="tab-btn" data-tab="financial">Financial Data</button>
+                    <button class="tab-btn" data-tab="social">Social Media</button>
+                </div>
+                <div class="tab-content active" id="online">
+                    <h3>Online Privacy Protection</h3>
+                    <ul class="prevention-list">
+                        <li><strong>Use Strong Passwords:</strong> Create complex, unique passwords for each account</li>
+                        <li><strong>Enable 2FA:</strong> Add an extra layer of security to your accounts</li>
+                        <li><strong>Review App Permissions:</strong> Regularly check what data apps can access</li>
+                    </ul>
+                </div>
+                <!-- Other tab contents -->
             </div>
         </div>
     </section>
@@ -158,6 +200,58 @@
                     </div>
                 </div>
             </div>
+            <div class="legal-action">
+                <h4>What to do if violated:</h4>
+                <ol>
+                    <li>Document the violation with evidence</li>
+                    <li>Contact the company's data protection officer</li>
+                    <li>File complaint with authorities</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Stories Section -->
+    <section id="stories" class="stories section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Real Life Stories</h2>
+            </div>
+            <div class="story-slider">
+                <div class="story-card active">
+                    <div class="story-content">
+                        <h3>The Social Media Data Leak</h3>
+                        <p>Sarah discovered her personal information had been harvested...</p>
+                        <div class="story-lesson">
+                            <strong>Lesson:</strong> Always review app permissions
+                        </div>
+                    </div>
+                </div>
+                <!-- More story cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog / News Section -->
+    <section id="blog" class="blog section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest News</h2>
+                <p>Stay updated on privacy laws</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="placeholder.jpg" alt="GDPR Update">
+                    </div>
+                    <div class="blog-content">
+                        <h3>New GDPR Amendments</h3>
+                        <p>Latest changes to data protection laws...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+                <!-- More blog cards -->
+            </div>
         </div>
     </section>
 
@@ -179,18 +273,36 @@
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
+                        <label for="phone">Phone Number (optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
                         <label for="issue">Nature of Complaint</label>
                         <select id="issue" name="issue" required>
                             <option value="">Select an option</option>
                             <option value="data-breach">Data Breach</option>
                             <option value="unauthorized-use">Unauthorized Data Use</option>
                             <option value="privacy-violation">Privacy Policy Violation</option>
+                            <option value="identity-theft">Identity Theft</option>
+                            <option value="financial-fraud">Financial Fraud</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="company">Company/Organization Involved (if applicable)</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date of Incident (approximate)</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <div class="form-group">
                         <label for="details">Details of the Incident</label>
-                        <textarea id="details" name="details" rows="5" required></textarea>
+                        <textarea id="details" name="details" rows="5" required placeholder="Please describe what happened, including any evidence you have (screenshots, emails, etc.)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="evidence">Upload Evidence (optional, max 5MB)</label>
+                        <input type="file" id="evidence" name="evidence" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn">Submit Report</button>
@@ -198,14 +310,55 @@
                 </form>
                 <div class="report-info">
                     <h3>What happens after you file?</h3>
-                    <p>Our team will review your complaint and:</p>
-                    <ul>
-                        <li>Provide guidance on next steps</li>
-                        <li>Help draft official complaints to regulators if needed</li>
-                        <li>Suggest legal resources if appropriate</li>
-                        <li>Keep you informed about similar cases</li>
-                    </ul>
-                    <p>Note: We are not a law firm and cannot provide legal representation.</p>
+                    <div class="action-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Immediate Actions</h4>
+                                <ul>
+                                    <li>Change affected passwords immediately</li>
+                                    <li>Place fraud alerts with credit bureaus if financial data was compromised</li>
+                                    <li>Document all evidence including dates and communications</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Within 24 Hours</h4>
+                                <ul>
+                                    <li>Our team will review your complaint and categorize the violation</li>
+                                    <li>You'll receive a confirmation email with your case number</li>
+                                    <li>We'll provide specific guidance based on your type of complaint</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Next 3-5 Days</h4>
+                                <ul>
+                                    <li>If applicable, we'll help draft official complaints to regulators</li>
+                                    <li>You'll receive template letters for contacting the offending company</li>
+                                    <li>We may connect you with legal resources if appropriate</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Ongoing Support</h4>
+                                <ul>
+                                    <li>We'll monitor similar cases that may affect your situation</li>
+                                    <li>You'll receive updates on relevant legal changes</li>
+                                    <li>Option to join class action lawsuits if they emerge</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disclaimer">
+                        <p><strong>Note:</strong> We are not a law firm and cannot provide legal representation. For serious violations, we recommend consulting with an attorney specializing in privacy law.</p>
+                    </div>
                 </div>
             </div>
         </div>
