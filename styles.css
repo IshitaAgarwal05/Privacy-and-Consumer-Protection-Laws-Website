@@ -626,6 +626,139 @@ img {
 
 
 
+/* Additional interactive styles */
+.info-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.protection-tip {
+    position: relative;
+    padding-left: 30px;
+}
+.protection-tip:before {
+    content: "🛡️";
+    position: absolute;
+    left: 0;
+}
+.law-card {
+    border-left: 4px solid #253551;
+}
+.scam-report-card {
+    background-color: #fff8f8;
+    border-radius: 8px;
+}
+.interactive-list {
+    counter-reset: step-counter;
+}
+.interactive-list li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 15px;
+}
+.interactive-list li:before {
+    counter-increment: step-counter;
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    background: #253551;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+/* Add to your styles.css */
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+.info-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+}
+
+.info-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.protection-tip {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.protection-tip:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #253551;
+    font-weight: bold;
+}
+
+.law-card {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+}
+
+.emergency-contacts {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.contact-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem;
+    display: inline-block;
+    min-width: 250px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #253551;
+    color: #253551;
+    margin-left: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        margin-left: 0;
+    }
+    
+    .data-grid, .protection-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
 
 
 
