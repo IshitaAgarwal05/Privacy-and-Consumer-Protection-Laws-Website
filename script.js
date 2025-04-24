@@ -137,3 +137,77 @@ function initCounters() {
         animateValue(stat, 0, target, 2000);
     });
 }
+
+
+
+
+
+// appscript
+// Add this to your existing script.js
+document.getElementById('complaintForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+  
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+  
+    const formData = new FormData(form);
+  
+    try {
+      let evidenceData = '';
+      let evidenceName = '';
+      let evidenceType = '';
+  
+      const file = formData.get('evidence');
+      if (file && file.size > 0) {
+        const reader = new FileReader();
+        evidenceName = file.name;
+        evidenceType = file.type;
+        evidenceData = await new Promise((resolve, reject) => {
+          reader.onload = () => {
+            const base64String = reader.result.split(',')[1];
+            resolve(base64String);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+  
+      // Convert to plain object
+      const body = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        issue: formData.get('issue'),
+        company: formData.get('company'),
+        date: formData.get('date'),
+        details: formData.get('details'),
+        evidence: evidenceData,
+        evidenceFilename: evidenceName,
+        evidenceContentType: evidenceType
+      };
+  
+      const response = await fetch('https://script.google.com/macros/s/YOUR_DEPLOYED_URL/exec', {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      const result = await response.json();
+      if (result.success) {
+        alert('Report submitted successfully!');
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+    } catch (error) {
+      alert('Error: ' + error.message);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Report';
+    }
+  });
+  
