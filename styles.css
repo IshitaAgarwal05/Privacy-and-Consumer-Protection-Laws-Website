@@ -1,12 +1,13 @@
 /* Base Styles */
 :root {
-    --primary: #2563EB;
-    --secondary: #E0E0DB;
-    --white: #FFFFFF;
-    --dark-gray: #2A2829;
-    --black: #000000;
-    --base-font-size: 16px;
+    --primary: #0F1A2B;   /* Dark Blue-Grey */
+    --secondary: #DEE6EC; /* Muted Blue */
+    --bg-light: #DBDAD5;  /* Soft Beige Background */
+    --bg-card: #C8D9E6;   /* Light Blue Card Background */
+    --white: #FFFFFF;     /* White */
+    --base-font-size: 19px;
 }
+
 
 * {
     margin: 0;
@@ -18,8 +19,17 @@ html {
     scroll-behavior: smooth;
 }
 
+.story-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 80vh; /* Adjust this value to fit more or less on screen */
+    display: block;
+    margin: 20px auto;
+    object-fit: contain;
+}
+
 body {
-    font-family: 'Almarai', sans-serif;
+    font-family: 'Georgia', sans-serif;
     font-size: var(--base-font-size);
     line-height: 1.6;
     color: var(--dark-gray);
@@ -122,11 +132,11 @@ img {
 
 .logo h1 {
     font-size: 1.8rem;
-    color: var(--primary);
+    color: #482B25;
 }
 
 .logo h1 span {
-    color: var(--dark-gray);
+    color: #18243E;
 }
 
 .nav ul {
@@ -202,10 +212,12 @@ img {
     display: flex;
     align-items: center;
     gap: 3rem;
+    
 }
 
 .about-text {
     flex: 1;
+    color: #482B25;
 }
 
 .about-text h3 {
@@ -250,7 +262,7 @@ img {
 .stat-number {
     font-size: 3rem;
     font-weight: 700;
-    color: #2563EB;
+    color: #567C8D;
     margin-bottom: 0.5rem;
     font-family: 'Libre Baskerville', serif;
 }
@@ -461,7 +473,7 @@ img {
 
 /* Footer */
 .footer {
-    background-color: var(--dark-gray);
+    background-color:#0F1A2B;
     color: var(--secondary);
     padding: 3rem 0 1rem;
 }
@@ -776,7 +788,7 @@ img {
 .risk-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: rem;
     margin-top: 1rem;
   }
   
@@ -784,13 +796,13 @@ img {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #333;
   }
   
   .risk-icon {
     font-size: 1.4rem;
-    line-height: 1;
+    line-height: 0.5;
     transform: scale(0.7);
   }
   
@@ -916,6 +928,89 @@ img {
 
 
 
+/* chatbot */
+#chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4a90e2;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  #chatbot-window {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    height: 400px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1001;
+    overflow: hidden;
+  }
+
+  .chatbot-header {
+    background: #4a90e2;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  #chat-messages {
+    padding: 10px;
+    flex: 1;
+    overflow-y: auto;
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+
+  .chatbot-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+
+  .chatbot-input input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .chatbot-input button {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+  }
+
+  .chatbot-msg-user {
+    text-align: right;
+    margin: 5px 0;
+    color: #333;
+  }
+
+  .chatbot-msg-bot {
+    text-align: left;
+    margin: 5px 0;
+    color: #444;
+  }
+  
 
 
 
@@ -1077,4 +1172,13 @@ img {
     .story-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.comic-image {
+    max-width: 100%;
+    max-height: 80vh; /* Adjust this value to shrink or grow image height */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
 }

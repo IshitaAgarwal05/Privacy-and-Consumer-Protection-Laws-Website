@@ -142,8 +142,60 @@ function initCounters() {
 
 
 
+
+
+// Chatbot
+function toggleChat(show) {
+    document.getElementById("chatbot-window").style.display = show ? "flex" : "none";
+    document.getElementById("chatbot-icon").style.display = show ? "none" : "block";
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    appendMessage("You", msg, "user");
+    input.value = "";
+
+    const res = await fetch("http://localhost:5000/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: msg })
+    })
+    .then(res => res.json())
+    .then(data => {
+        // Show bot reply
+        chatBody.innerHTML += `<div class="bot-message">PrivacyGuard: ${data.reply}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+    })
+    .catch(err => {
+        chatBody.innerHTML += `<div class="bot-message error">Error: ${err.message}</div>`;
+    });
+
+    const data = await res.json();
+    appendMessage("PrivacyGuard", data.reply, "bot");
+  }
+
+  function appendMessage(sender, text, type) {
+    const msgBox = document.getElementById("chat-messages");
+    const msg = document.createElement("div");
+    msg.className = "chatbot-msg-" + type;
+    msg.textContent = `${sender}: ${text}`;
+    msgBox.appendChild(msg);
+    msgBox.scrollTop = msgBox.scrollHeight;
+  }
+
+
+
+
+
+
+
+
 // appscript
-// Add this to your existing script.js
 document.getElementById('complaintForm').addEventListener('submit', async (e) => {
     e.preventDefault();
   
@@ -153,29 +205,8 @@ document.getElementById('complaintForm').addEventListener('submit', async (e) =>
     submitBtn.textContent = 'Submitting...';
   
     const formData = new FormData(form);
-  
-    try {
-      let evidenceData = '';
-      let evidenceName = '';
-      let evidenceType = '';
-  
-      const file = formData.get('evidence');
-      if (file && file.size > 0) {
-        const reader = new FileReader();
-        evidenceName = file.name;
-        evidenceType = file.type;
-        evidenceData = await new Promise((resolve, reject) => {
-          reader.onload = () => {
-            const base64String = reader.result.split(',')[1];
-            resolve(base64String);
-          };
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-      }
-  
-      // Convert to plain object
-      const body = {
+
+    const body = {
         name: formData.get('name'),
         email: formData.get('email'),
         phone: formData.get('phone'),
@@ -183,31 +214,62 @@ document.getElementById('complaintForm').addEventListener('submit', async (e) =>
         company: formData.get('company'),
         date: formData.get('date'),
         details: formData.get('details'),
-        evidence: evidenceData,
-        evidenceFilename: evidenceName,
-        evidenceContentType: evidenceType
-      };
+      }; 
   
-      const response = await fetch('https://script.google.com/macros/s/YOUR_DEPLOYED_URL/exec', {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-          'Content-Type': 'application/json'
+    try {  
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwgqFgNIm9lq4oih4G_IbhbjmGRCFSPRdHmr7WEnbsGIyfC0Duu1mchpqPlSmsjEbNSyQ/exec', {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            mode: 'no-cors',
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                phone: phone,
+                issue: issue,
+                company: company,
+                date: date,
+                details: details
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          if (data.success) {
+            alert("Form submitted successfully!");
+          } else {
+            alert("Submission failed: " + data.error);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error submitting the form.');
+        });
+        
+
+        // Debugging response
+        const text = await response.text();
+        console.log('Server raw response:', text);
+
+        let result = {};
+        try {
+            result = JSON.parse(text);
+        } catch (err) {
+            throw new Error('Server did not return valid JSON. Raw response: ' + text);
         }
-      });
-  
-      const result = await response.json();
-      if (result.success) {
-        alert('Report submitted successfully!');
-        form.reset();
-      } else {
-        throw new Error(result.error || 'Submission failed');
-      }
+
+        if (result.success) {
+            alert('Report submitted successfully!');
+            form.reset();
+        } else {
+            throw new Error(result.error || 'submission failed');
+        }
     } catch (error) {
-      alert('Error: ' + error.message);
+        alert('error: ' + error.message);
     } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit Report';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'submit report';
     }
-  });
-  
+});

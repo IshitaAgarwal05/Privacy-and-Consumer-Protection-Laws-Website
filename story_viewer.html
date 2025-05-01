@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrivacyGuard | Story Viewer</title>
+    <title>PrivacyLaws | Story Viewer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-    <div class="container">
-        <div class="logo">
-            <h1>Privacy<span>Guard</span></h1>
+        <div class="container">
+            <div class="logo">
+                <h1>Privacy<span>Laws</span></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <nav class="nav">
-            <ul>
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="stories.html">Real Stories</a></li>
-                <li><a href="#laws">Basic Laws</a></li>
-                <li><a href="#report">File Report</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
-        <div class="mobile-menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
     </header>
 
     <section class="story-viewer">
@@ -44,7 +40,8 @@
                 <button id="next-btn" class="btn">Next</button>
             </div>
             
-            <a href="stories.html" class="back-to-stories">← Back to All Stories</a>
+            <a href="index.html" class="back-to-stories">← Back to All Stories</a>
+
         </div>
     </section>
 
@@ -60,20 +57,16 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#laws">Basic Laws</a></li>
-                        <li><a href="#report">File Report</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
                     </ul>
                 </div>
                 <div class="footer-legal">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
@@ -102,12 +95,12 @@
             },
             '2': {
                 title: "Digital Arrest: The Fake Police Scam",
-                panels: 4,
+                panels: 8,
                 description: "Sophisticated impersonation of police officials"
             },
             '3': {
                 title: "The Fake Colleague: A ₹3.5 Crore Scam",
-                panels: 4,
+                panels: 3,
                 description: "Spoofed caller ID used to impersonate a colleague"
             }
         };
@@ -141,7 +134,7 @@
         
         // Functions
         function updateComicImage() {
-            comicImage.src = `assets/stories/${storyId}/story${storyId}-panel${currentPanel}.png`;
+            comicImage.src = `assets/stories/story${storyId}-panel${currentPanel}.png`;
             comicImage.alt = `Story ${storyId} Panel ${currentPanel}`;
             pageIndicator.textContent = `${currentPanel}/${totalPanels}`;
         }

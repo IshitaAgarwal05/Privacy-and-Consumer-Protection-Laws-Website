@@ -21,11 +21,11 @@
             </div>
             <nav class="nav">
                 <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="stories.html">Real Stories</a></li>
-                    <li><a href="#laws">Basic Laws</a></li>
-                    <li><a href="#report">File Report</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#home" class="active" style="color: #272123;">Home</a></li>
+                    <li><a href="stories" style="color: #0F1A2B;">Real Stories</a></li>
+                    <li><a href="#laws" style="color: #482B25;">Basic Laws</a></li>
+                    <li><a href="#report" style="color: #0F1A2B;">File Report</a></li>
+                    <li><a href="#contact" style="color: #482B25;">Contact Us</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu-btn">
@@ -51,8 +51,8 @@
     <section id="about" class="about section-padding">
         <div class="container">
             <div class="section-header">
-                <h2>About Us</h2>
-                <p>Who we are and what we stand for</p>
+                <h2 > About Us </h2>
+                <p style="color: #272123;" >Who we are and what we stand for</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -63,7 +63,7 @@
                     <p>We envision a digital ecosystem where consumers are fully aware of their rights and businesses operate with transparency and accountability regarding data collection and usage practices.</p>
                 </div>
                 <div class="about-image">
-                    <img src="assets/1.png" alt="Privacy Matters" style="border-radius: 30px">
+                    <img src="assets/right2.jpg" alt="Privacy Matters" style="border-radius: 30px">
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>India's Privacy Crisis in Numbers</h2>
-                <p>Verified statistics about digital privacy violations in India</p>
+                <p style="color: #272123;">Verified statistics about digital privacy violations in India</p>
             </div>
             <div class="stats-grid">
                 <div class="stat-card">
@@ -108,13 +108,71 @@
         </div>
     </section>
 
+    <!-- Real Stories Section -->
+<section id="stories" class="story-selection section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2>Real Life Stories</h2>
+            <p class="subtitle">Select a story to learn from these actual cases</p>
+        </div>
+
+        <div class="story-grid">
+            <!-- Story 1 Preview -->
+            <div class="story-preview" data-story="1">
+                <div class="preview-image">
+                    <img src="assets/stories/story1-cover.png" alt="Retired teacher story">
+                </div>
+                <div class="preview-content">
+                    <h3>The KYC Con</h3>
+                    <p>A retired teacher loses her life savings to a fake KYC update scam...</p>
+                    <button class="btn read-story">Read Story</button>
+                </div>
+            </div>
+
+            <!-- Story 2 Preview -->
+            <div class="story-preview" data-story="2">
+                <div class="preview-image">
+                    <img src="assets/stories/story2-cover.png" alt="Digital arrest story">
+                </div>
+                <div class="preview-content">
+                    <h3>Digital Arrest</h3>
+                    <p>A retired official tricked into transferring ₹1.2 crore by fake police...</p>
+                    <button class="btn read-story">Read Story</button>
+                </div>
+            </div>
+
+            <!-- Story 3 Preview -->
+            <div class="story-preview" data-story="3">
+                <div class="preview-image">
+                    <img src="assets/stories/story3-cover.png" alt="Fake colleague story">
+                </div>
+                <div class="preview-content">
+                    <h3>The Fake Colleague</h3>
+                    <p>Company director scammed of ₹3.5 crore through spoofed caller ID...</p>
+                    <button class="btn read-story">Read Story</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.read-story').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const storyId = this.closest('.story-preview').dataset.story;
+            window.location.href = `story_viewer.html?story=${storyId}`;
+        });
+    });
+</script>
+
+
 
 
     <!-- Data Collection Section -->
     <section id="data-collection" class="section-padding">
         <div class="container">
             <div class="section-header">
-                <h2>What Apps & Websites Collect From You</h2>
+                <h2>What Websites & Apps Collect From You</h2>
                 <p>Your digital footprint is more valuable than you think</p>
             </div>
             
@@ -165,11 +223,11 @@
                 <div class="risk-list">
                   <div class="risk-item">
                     <span class="risk-icon">💰</span>
-                    <p>Data sold to advertisers & brokers</p>
+                    <p>Data is sold to advertisers & brokers</p>
                   </div>
                   <div class="risk-item">
                     <span class="risk-icon">🆔</span>
-                    <p>Can lead to identity theft</p>
+                    <p>Can lead to identity thefts</p>
                   </div>
                   <div class="risk-item">
                     <span class="risk-icon">📢</span>
@@ -313,18 +371,18 @@
                 <div class="law-card">
                     <h3>Consumer Protection Act, 2019</h3>
                     <ul>
-                        <li>Covers e-commerce transactions</li>
-                        <li>Protects against misleading ads</li>
-                        <li>Online complaint filing system</li>
+                        <li>Covers E-commerce transactions.</li>
+                        <li>Protects against misleading ads.</li>
+                        <li>Online complaint filing system.</li>
                     </ul>
                 </div>
                 
                 <div class="law-card">
                     <h3>IT Act, 2000 (Amended 2008)</h3>
                     <ul>
-                        <li>Section 66: Punishment for hacking</li>
-                        <li>Section 43A: Data protection</li>
-                        <li>Section 72A: Penalties for misuse</li>
+                        <li>Section 66: Punishment for hacking.</li>
+                        <li>Section 43A: Data protection.</li>
+                        <li>Section 72A: Penalties for misuse.</li>
                     </ul>
                 </div>
                 
@@ -417,7 +475,7 @@
                     </div>
                 </div>
             </div>
-            <div class="legal-action">
+            <div class="legal-action" style="padding-left: 30px; padding-top: 30px;">
                 <h4>What to do if violated:</h4>
                 <ol>
                     <li>Document the violation with evidence</li>
@@ -438,12 +496,12 @@
             <div class="blog-grid">
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="placeholder.jpg" alt="GDPR Update">
+                        <img src="assets/placeholder.png" alt="GDPR Update">
                     </div>
                     <div class="blog-content">
                         <h3>New GDPR Amendments</h3>
                         <p>Latest changes to data protection laws...</p>
-                        <a href="#" class="read-more">Read More</a>
+                        <a href="https://www.euronews.com/tag/gdpr" class="read-more">Read More</a>
                     </div>
                 </article>
                 <!-- More blog cards -->
@@ -471,7 +529,7 @@
                 </ol>
             </div>
             
-            <div class="scam-report-card">
+            <div class="scam-report-card" style="padding-top: 30px; padding-left: 30px; padding-bottom: 30px;">
                 <h3>📝 What to Include in Your Report:</h3>
                 <ul>
                     <li>Date and time of incident</li>
@@ -595,6 +653,32 @@
             </div>
         </div>
     </section>
+
+
+
+
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-icon" onclick="toggleChat(true)">
+        🤖 
+    </div>
+    
+    <div id="chatbot-window">
+        <div class="chatbot-header">
+        <span>PrivacyGuard Assistant</span>
+        <button onclick="toggleChat(false)">—</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div class="chatbot-input">
+        <input type="text" id="user-input" placeholder="Ask your privacy question..." />
+        <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+
+
+
+
 
     <!-- Contact Us Section -->
     <!-- <section id="contact" class="contact section-padding">
