@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Your API key from Google AI Studio
-API_KEY = "AIzaSyCZO4MzJsJDnGdcescaV88sU3q0V3FOEiw"
+API_KEY = GEMINI_API_KEY
 
 genai.configure(api_key=API_KEY)
 
